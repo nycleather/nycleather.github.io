@@ -6,42 +6,38 @@ The page is a storefront sign: a mustard board with a black frame, “NYC” in 
 
 ## GitHub Pages at the site root
 
-This build is for the free user site `https://nycleather.github.io/`. Published files belong at the repository root, not in a subfolder. `index.html` sits next to `_next/`. The root `.nojekyll` file is what stops Jekyll from hiding `_next/`.
+This build is for the free user site, `https://nycleather.github.io/`, with no custom domain.
+
+Published files belong at the repository root, not in a subfolder. `index.html` sits next to `_next/`. The empty root `.nojekyll` file turns Jekyll off so Pages serves `_next/`.
 
 ```bash
-npm install
+npm ci
 npm run build
 npm test
 ```
 
-`out/` is the static export and is not committed. The committed root HTML and `_next/` are the approved export. Copy `out/` back to the root only when replacing that export, and keep `CNAME` and `.nojekyll`.
+`out/` is the static export and is not committed. The committed root HTML and `_next/` are the approved export. Copy the contents of `out/` back to the repository root only when replacing that export, and keep `.nojekyll`. Do not commit `node_modules`, `.next`, or `out/`.
 
-To build for a subpath instead, set `NEXT_PUBLIC_BASE_PATH` (no trailing slash) and run `npm run build` again. Leave it unset for this site.
+Leave `NEXT_PUBLIC_BASE_PATH` unset. The export uses root paths for `https://nycleather.github.io/`.
 
-## Custom domain prepared, not live
-
-Canonical domain: `leatherstudio.nyc`, and only that name, in the root `CNAME` file. `www` is not included. `nycleatherrepair.com` is not part of this site.
-
-Nothing here changes public DNS. The custom domain is not live. Point DNS at GitHub only after this file is on `main` and Settings → Pages shows `leatherstudio.nyc`. The owner confirms branch `main`, folder `/`, and that custom domain. `PUT /repos/{owner}/{repo}/pages` can set it, and it requires a repository admin. The verification TXT value is not in the Pages API. The owner copies it from profile Settings → Pages → Add a domain.
-
-TXT host, added with the other records only after that claim:
-
-`_github-pages-challenge-nycleather.leatherstudio.nyc`
-
-Apex `A` records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
-
-Apex `AAAA` records: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
-
-Or one `ALIAS` or `ANAME` to `nycleather.github.io`. No wildcard. Enforce HTTPS for the custom domain only after GitHub issues the certificate.
+Do not add a `CNAME` file. Do not set a custom domain or DNS records in this repository. `leatherstudio.nyc` is a separate pending domain and is not configured here.
 
 ## Run locally
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
 Open the local address Next.js prints. With the default empty base path, the page is at `/`.
+
+To review the committed export instead, serve the repository root:
+
+```bash
+python3 -m http.server 4173
+```
+
+Open `http://127.0.0.1:4173/`.
 
 ## Add a photograph
 
