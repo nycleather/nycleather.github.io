@@ -420,6 +420,16 @@ footer a:focus-visible {
   outline-offset: 4px;
 }
 
+.credit {
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
+  color: rgb(244 239 230 / 62%);
+}
+
 .fine {
   margin-top: 0.75rem;
   font-size: 0.75rem;

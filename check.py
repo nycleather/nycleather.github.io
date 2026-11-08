@@ -37,6 +37,7 @@ required = [
     "Sole finishing",
     "tel:+12122652108",
     "212-265-2108",
+    'Designed by <a href="https://mechaturtles.com" rel="noopener">mechaturtles.com</a>',
     "205+West+57th+Street",
     'rel="canonical" href="https://leatherstudio.nyc/"',
     "Workshop interior at NYC Leather Repair",
