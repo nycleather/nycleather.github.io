@@ -27,16 +27,17 @@ required = [
     "Between 7th Avenue and Broadway",
     "Near Carnegie Hall",
     "Jorge Bacuilima",
-    "Shoe repair &amp; restoration",
-    "Resoling",
-    "Heel replacement",
-    "Cleaning &amp; polishing",
-    "Dyeing &amp; stretching",
-    "Handbag &amp; luggage repair",
-    "Leather care",
-    "Call the shop to ask about hours.",
+    "Resoling, heels, stretching, and full restorations. Bring the pair you can't replace.",
+    "Zippers, hardware, straps, cleaning and conditioning.",
+    "Shoe shines, sneaker and suede cleaning, conditioning, and dyeing for shoes and bags.",
+    "Boot zippers, briefcases, and sports gear like baseball glove restringing.",
+    "Monday to Friday, 7:30 AM to 6:30 PM",
+    "Saturday, 10 AM to 5 PM",
+    "Sole shaping",
+    "Sole finishing",
     "tel:+12122652108",
     "212-265-2108",
+    'Designed by <a href="https://mechaturtles.com" rel="noopener">mechaturtles.com</a>',
     "205+West+57th+Street",
     'rel="canonical" href="https://leatherstudio.nyc/"',
     "Workshop interior at NYC Leather Repair",
@@ -49,7 +50,7 @@ for text in required:
     if text not in html:
         fail(f"index.html missing {text}")
 
-for banned in ("Website preview", "Draft for review", "noindex", "nofollow", "Photo to be added"):
+for banned in ("Website preview", "Draft for review", "noindex", "nofollow", "Photo to be added", "\u2014", "Sunday", "$"):
     if banned in html:
         fail(f"index.html still contains {banned}")
 if "<video" in html.lower():
