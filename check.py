@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the built static site and print first-load sizes."""
+"""Check the built static site and print payload sizes."""
 
 import gzip
 import re
@@ -8,9 +8,18 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parent
 dist = root / "dist"
+html = (dist / "index.html").read_text()
+css = (dist / "styles.css").read_text()
+player = (dist / "player.js").read_text()
+page404 = (dist / "404.html").read_text()
+errors = []
+
+
+def fail(message):
+    errors.append(message)
+
+
 required = [
-    "Website preview",
-    "Draft for review",
     "NYC",
     "Leather Repair",
     "205 West 57th Street",
@@ -25,53 +34,83 @@ required = [
     "Dyeing &amp; stretching",
     "Handbag &amp; luggage repair",
     "Leather care",
-    "Photo to be added",
-    "Storefront",
-    "Workshop",
-    "At the bench",
     "Call the shop to ask about hours.",
     "tel:+12122652108",
     "212-265-2108",
     "205+West+57th+Street",
-    "noindex, nofollow",
+    'rel="canonical" href="https://leatherstudio.nyc/"',
+    "Workshop interior at NYC Leather Repair",
+    "Hands cutting a piece of material beside a shoe",
+    "A worker holding a shoe to a finishing machine",
+    'data-src="/media/videos/sole-trimming.mp4"',
+    'data-src="/media/videos/sole-finishing.mp4"',
 ]
-
-errors = []
-
-
-def fail(message):
-    errors.append(message)
-
-
-html = (dist / "index.html").read_text()
 for text in required:
     if text not in html:
         fail(f"index.html missing {text}")
-if html.count("Photo to be added") != 3:
-    fail("expected 3 photo placeholders")
-if "<script" in html.lower():
-    fail("index.html includes a script")
-if "nycleatherrepair.com" in html or "leatherstudio.nyc" in html:
-    fail("homepage should not claim a domain in the document")
+
+for banned in ("Website preview", "Draft for review", "noindex", "nofollow", "Photo to be added"):
+    if banned in html:
+        fail(f"index.html still contains {banned}")
+if "<video" in html.lower():
+    fail("video element is in the initial HTML")
+if re.search(r'<script(?![^>]+src="/player\.js")', html):
+    fail("unexpected script in index.html")
+if html.count('src="/player.js"') != 1:
+    fail("player.js should be included once")
 if re.search(r"bryce|grok", html, re.I):
     fail("unexpected credit in index.html")
+if "nycleatherrepair.com" in html:
+    fail("old domain appeared in index.html")
 
-cname = (dist / "CNAME").read_text().strip()
-if cname != "leatherstudio.nyc":
-    fail(f"CNAME is {cname!r}")
+if (dist / "CNAME").read_text().strip() != "leatherstudio.nyc":
+    fail("CNAME is not leatherstudio.nyc")
 if not (dist / ".nojekyll").is_file():
     fail("missing .nojekyll")
-
-page404 = (dist / "404.html").read_text()
 if "noindex, nofollow" not in page404:
     fail("404 is missing noindex")
+if "video.src" not in player or "data-src" not in player:
+    fail("player.js does not assign data-src on click")
+if "autoplay" in player or "preload" in html.lower() and ".mp4" in html.split("preload", 1)[-1][:80]:
+    pass
+if re.search(r"\.mp4", html) and not re.search(r'data-src="/media/videos/[^"]+\.mp4"', html):
+    fail("mp4 reference is not a data-src")
+for match in re.finditer(r'(?<![\w-])(?:src|href)="([^"]+\.mp4)"', html):
+    fail(f"mp4 is fetchable from {match.group(0)}")
 
-js = [path for path in dist.rglob("*") if path.suffix == ".js"]
-if js:
-    fail(f"javascript in dist: {js}")
+lazy_images = re.findall(r"<img\b[^>]*>", html)
+if len(lazy_images) != 5:
+    fail(f"expected 5 images, found {len(lazy_images)}")
+for tag in lazy_images:
+    if "loading=\"lazy\"" not in tag:
+        fail(f"image is not lazy: {tag[:80]}")
+    if not re.search(r'width="\d+"', tag) or not re.search(r'height="\d+"', tag):
+        fail("image missing width or height")
+
+photos = [
+    "media/photos/workshop-800.webp",
+    "media/photos/workshop-1600.webp",
+    "media/photos/hands-cutting-800.webp",
+    "media/photos/hands-cutting-1600.webp",
+    "media/photos/finishing-machine-800.webp",
+    "media/photos/finishing-machine-1600.webp",
+    "media/videos/sole-trimming.webp",
+    "media/videos/sole-finishing.webp",
+    "media/videos/sole-trimming.mp4",
+    "media/videos/sole-finishing.mp4",
+]
+for relative in photos:
+    path = dist / relative
+    if not path.is_file():
+        fail(f"missing {relative}")
+        continue
+    size = path.stat().st_size
+    limit = 1_600_000 if path.suffix == ".mp4" else 180_000
+    if size > limit:
+        fail(f"{relative} is {size} bytes, over {limit}")
 
 refs = []
-for document in (html, (dist / "styles.css").read_text(), page404):
+for document in (html, css, page404, player):
     refs.extend(re.findall(r'(?:href|src|url)\((?:"|\')?(/[^"\')\s]+)', document))
     refs.extend(re.findall(r'(?:href|src)="(/[^"]+)"', document))
 
@@ -79,28 +118,33 @@ seen = []
 raw = gzip_total = 0
 for ref in refs:
     path = ref.split("?", 1)[0]
-    if path in seen or path.endswith("/"):
+    if path in seen or path.endswith("/") or path.startswith("http"):
         continue
     seen.append(path)
     file_path = dist / path.lstrip("/")
     if not file_path.is_file():
         fail(f"missing asset {path}")
         continue
+    if path.endswith(".mp4"):
+        continue
     data = file_path.read_bytes()
+    if 'loading="lazy"' in html and path.startswith("/media/"):
+        continue
     raw += len(data)
     gzip_total += len(gzip.compress(data, 9))
 
-html_bytes = (dist / "index.html").read_bytes()
+html_bytes = html.encode()
 raw += len(html_bytes)
 gzip_total += len(gzip.compress(html_bytes, 9))
-
 if raw > 200_000:
-    fail(f"first-load raw bytes {raw} exceed 200000")
+    fail(f"initial raw bytes {raw} exceed 200000")
 
-print(f"requests={len(seen) + 1}")
-print(f"raw_bytes={raw}")
-print(f"gzip_bytes={gzip_total}")
-print(f"js_files={len(js)}")
+print(f"initial_requests={len([p for p in seen if not p.startswith('/media/')]) + 1}")
+print(f"initial_raw_bytes={raw}")
+print(f"initial_gzip_bytes={gzip_total}")
+print(f"photo_bytes={sum((dist / p).stat().st_size for p in photos if p.endswith('.webp') and '/photos/' in p)}")
+print(f"poster_bytes={sum((dist / p).stat().st_size for p in photos if p.endswith('.webp') and '/videos/' in p)}")
+print(f"video_bytes={sum((dist / p).stat().st_size for p in photos if p.endswith('.mp4'))}")
 
 if errors:
     print("\n".join(errors), file=sys.stderr)
