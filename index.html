@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NYC Leather Repair | Website Preview</title>
+    <title>NYC Leather Repair</title>
     <meta
       name="description"
-      content="Website preview for NYC Leather Repair, 205 West 57th Street, New York, NY. Draft for review. Call 212-265-2108."
+      content="NYC Leather Repair, 205 West 57th Street, New York, NY, near Carnegie Hall. Call 212-265-2108."
     />
-    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://leatherstudio.nyc/" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="preload" href="/fonts/libre-baskerville-700.woff2" as="font" type="font/woff2" crossorigin />
@@ -17,11 +17,6 @@
     <link rel="preload" href="/fonts/barlow-600.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
-    <div class="banner">
-      <p class="banner-strong">Website preview</p>
-      <p>Draft for review</p>
-    </div>
-
     <main>
       <section class="sign-wrap" aria-labelledby="shop-name">
         <div class="sign">
@@ -68,18 +63,88 @@
 
       <section class="photos" aria-labelledby="shop-photos-heading">
         <h2 id="shop-photos-heading" class="section-label">The shop</h2>
-        <div class="photo-grid">
+        <div class="clip-grid">
           <figure>
-            <div class="frame"><p>Photo to be added</p></div>
-            <figcaption>Storefront</figcaption>
+            <button
+              type="button"
+              class="clip-play"
+              data-src="/media/videos/sole-trimming.mp4"
+              aria-label="Play sole trimming video"
+            >
+              <img
+                src="/media/videos/sole-trimming.webp"
+                alt=""
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="clip-label">Play</span>
+            </button>
+            <figcaption>Sole trimming</figcaption>
           </figure>
           <figure>
-            <div class="frame"><p>Photo to be added</p></div>
+            <button
+              type="button"
+              class="clip-play"
+              data-src="/media/videos/sole-finishing.mp4"
+              aria-label="Play sole finishing video"
+            >
+              <img
+                src="/media/videos/sole-finishing.webp"
+                alt=""
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="clip-label">Play</span>
+            </button>
+            <figcaption>Sole finishing</figcaption>
+          </figure>
+        </div>
+        <div class="photo-grid">
+          <figure class="photo-wide">
+            <img
+              class="shot"
+              src="/media/photos/workshop-800.webp"
+              srcset="/media/photos/workshop-800.webp 800w, /media/photos/workshop-1600.webp 1600w"
+              sizes="(min-width: 640px) 42rem, 100vw"
+              alt="Workshop interior at NYC Leather Repair, with shoes and materials on the benches"
+              width="1600"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            />
             <figcaption>Workshop</figcaption>
           </figure>
           <figure>
-            <div class="frame"><p>Photo to be added</p></div>
-            <figcaption>At the bench</figcaption>
+            <img
+              class="shot"
+              src="/media/photos/hands-cutting-800.webp"
+              srcset="/media/photos/hands-cutting-800.webp 800w, /media/photos/hands-cutting-1600.webp 1600w"
+              sizes="(min-width: 640px) 20rem, 100vw"
+              alt="Hands cutting a piece of material beside a shoe on the workbench"
+              width="1600"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Cutting</figcaption>
+          </figure>
+          <figure>
+            <img
+              class="shot"
+              src="/media/photos/finishing-machine-800.webp"
+              srcset="/media/photos/finishing-machine-800.webp 800w, /media/photos/finishing-machine-1600.webp 1600w"
+              sizes="(min-width: 640px) 20rem, 100vw"
+              alt="A worker holding a shoe to a finishing machine"
+              width="1600"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Finishing</figcaption>
           </figure>
         </div>
       </section>
@@ -112,7 +177,7 @@
       <p class="shop-name">NYC Leather Repair</p>
       <p>205 West 57th Street, New York, NY</p>
       <p><a href="tel:+12122652108">212-265-2108</a></p>
-      <p class="fine">Website preview. Draft for review.</p>
     </footer>
+    <script src="/player.js" defer></script>
   </body>
 </html>

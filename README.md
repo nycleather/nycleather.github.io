@@ -1,8 +1,8 @@
-# NYC Leather Repair — website preview
+# NYC Leather Repair
 
-Draft storefront page for NYC Leather Repair. Not a launched site. The preview banner, “Draft for review”, photo placeholders, and `noindex` stay in place.
+Public page for NYC Leather Repair. `index.html` and `styles.css` are the source. `player.js` only starts a video after a click. `sh build.sh` copies the page, fonts, `media/`, `icon.svg`, `404.html`, `CNAME`, and `.nojekyll` into `dist/`. `dist/` is not committed.
 
-The page source is `index.html` and `styles.css`. There is no client JavaScript. `sh build.sh` copies that site, the fonts, `icon.svg`, `404.html`, `CNAME`, and `.nojekyll` into `dist/`. `dist/` is not committed.
+The canonical URL is `https://leatherstudio.nyc/`. This repository does not change DNS, and it does not show that an HTTPS certificate is active.
 
 ```bash
 sh build.sh
@@ -23,6 +23,6 @@ Apex `AAAA` records: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:80
 
 Or one `ALIAS` or `ANAME` to `nycleather.github.io`. No wildcard. The verification TXT host is `_github-pages-challenge-nycleather.leatherstudio.nyc`. The owner copies the value from profile Settings → Pages → Add a domain. Enforce HTTPS for the custom domain after the certificate exists. `nycleatherrepair.com` is not part of this site.
 
-## Photographs
+## Shop media
 
-Photo files are not included. The three frames say “Photo to be added.”
+Three photographs: `workshop`, `hands-cutting`, and `finishing-machine`. Two reviewed clips, `sole-trimming` and `sole-finishing`, with WebP posters. The later preferred clip and the black-shoe photograph are not in this repository.
