@@ -130,6 +130,7 @@ p {
 .intro,
 .panel,
 .photos,
+.studio,
 .hours,
 .visit {
   margin-right: auto;
@@ -214,12 +215,14 @@ address {
 
 .panel,
 .photos,
+.studio,
 .hours,
 .visit {
   margin-top: 3rem;
 }
 
-.photos {
+.photos,
+.studio {
   max-width: 42rem;
 }
 
@@ -390,6 +393,61 @@ figcaption {
   font-size: 0.875rem;
 }
 
+.people {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.person {
+  min-width: 0;
+  border: 2px solid var(--ink);
+  padding: 1rem 0.75rem 1.1rem;
+  text-align: center;
+}
+
+.silhouette {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 36%, var(--ink) 0 17%, transparent 18%),
+    radial-gradient(ellipse at 50% 118%, var(--ink) 0 40%, transparent 41%),
+    var(--mat);
+}
+
+.person h3 {
+  margin: 0;
+  font-family: var(--sign);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.role {
+  margin: 0.4rem 0 0;
+  font-family: var(--sign);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.person-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 footer {
   background: var(--ink);
   color: var(--cream);
@@ -490,9 +548,14 @@ footer a:focus-visible {
 
   .panel,
   .photos,
+  .studio,
   .hours,
   .visit {
     margin-top: 3.5rem;
+  }
+
+  .people {
+    grid-template-columns: 1fr 1fr;
   }
 
   .board {

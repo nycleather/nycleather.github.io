@@ -35,6 +35,13 @@ required = [
     "Saturday, 10 AM to 5 PM",
     "Sole shaping",
     "Sole finishing",
+    "The Studio",
+    "Owner and craftsman",
+    "Repairing all things leather on West 57th Street.",
+    "Role TBD",
+    "Bryce Villanueva",
+    "Friend of the Studio &amp; Webmaster",
+    "Unpaid intern, by choice.",
     "tel:+12122652108",
     "212-265-2108",
     'Designed by <a href="https://mechaturtles.com" rel="noopener">mechaturtles.com</a>',
@@ -59,8 +66,10 @@ if re.search(r'<script(?![^>]+src="/player\.js")', html):
     fail("unexpected script in index.html")
 if html.count('src="/player.js"') != 1:
     fail("player.js should be included once")
-if re.search(r"bryce|grok", html, re.I):
+if re.search(r"grok", html, re.I):
     fail("unexpected credit in index.html")
+if html.count("Team Member") != 2 or html.count(">Placeholder<") != 2:
+    fail("expected two placeholder team cards")
 if "nycleatherrepair.com" in html:
     fail("old domain appeared in index.html")
 
