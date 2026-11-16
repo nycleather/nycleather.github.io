@@ -11,6 +11,7 @@
     video.setAttribute("playsinline", "");
     video.preload = "none";
     video.src = src;
+    video.volume = 0.3;
     button.replaceWith(video);
     var pending = video.play();
     if (pending && pending.catch) pending.catch(function () {});
