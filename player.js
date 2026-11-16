@@ -7,7 +7,6 @@
     var video = document.createElement("video");
     video.className = "clip-video";
     video.controls = true;
-    video.muted = true;
     video.playsInline = true;
     video.setAttribute("playsinline", "");
     video.preload = "none";
