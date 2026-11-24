@@ -54,6 +54,8 @@ required = [
     "Watch on Instagram",
     'data-src="/media/videos/sole-trimming.mp4"',
     'data-src="/media/videos/sole-finishing.mp4"',
+    'href="#services"',
+    'id="services"',
 ]
 for text in required:
     if text not in html:

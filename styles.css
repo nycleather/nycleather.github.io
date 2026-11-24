@@ -61,6 +61,16 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
   background: var(--cream);
@@ -456,6 +466,37 @@ address {
 .btn:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
+}
+
+.hero-jump {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.hero-jump a {
+  display: inline-block;
+  color: var(--ink);
+  font-family: var(--sign);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.hero-jump a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.hero-jump a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+#services {
+  scroll-margin-top: 2rem;
 }
 
 .panel,
