@@ -25,14 +25,6 @@
 @font-face {
   font-family: "Barlow Condensed";
   font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/barlow-condensed-600.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Barlow Condensed";
-  font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url("/fonts/barlow-condensed-700.woff2") format("woff2");
@@ -311,7 +303,6 @@ p {
 .intro,
 .panel,
 .photos,
-.hours,
 .visit {
   margin-right: auto;
   margin-left: auto;
@@ -321,7 +312,6 @@ p {
 
 .intro,
 .panel,
-.hours,
 .visit {
   max-width: 36rem;
 }
@@ -406,6 +396,11 @@ p {
   color: inherit;
 }
 
+.hours-compact a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
 .intro p,
 address {
   font-size: 1rem;
@@ -413,7 +408,7 @@ address {
 }
 
 address {
-  margin: 0.75rem 0 0;
+  margin-top: 0.75rem;
   font-style: normal;
 }
 
@@ -501,7 +496,6 @@ address {
 
 .panel,
 .photos,
-.hours,
 .visit {
   margin-top: 3rem;
 }
@@ -510,18 +504,8 @@ address {
   max-width: 42rem;
 }
 
-.hours,
 .visit {
   text-align: center;
-}
-
-.hours p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.75rem;
-}
-
-.visit {
   padding-bottom: 3.5rem;
 }
 
@@ -582,8 +566,7 @@ address {
   text-transform: none;
 }
 
-.clip-grid,
-.photo-grid {
+.clip-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -672,11 +655,6 @@ figcaption {
   font-weight: 500;
 }
 
-.note {
-  margin-top: 1.25rem;
-  font-size: 0.875rem;
-}
-
 footer {
   background: var(--ink);
   color: var(--cream);
@@ -726,12 +704,6 @@ footer a:focus-visible {
   text-decoration: underline;
 }
 
-.fine {
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
-}
-
 .missing {
   min-height: 100vh;
   display: flex;
@@ -754,6 +726,11 @@ footer a:focus-visible {
 
 .missing a {
   color: var(--ink);
+}
+
+.missing a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
 }
 
 
@@ -959,7 +936,6 @@ footer a:focus-visible {
 
   .panel,
   .photos,
-  .hours,
   .visit {
     margin-top: 3.5rem;
   }
@@ -968,14 +944,9 @@ footer a:focus-visible {
     padding: 1.75rem 2rem;
   }
 
-  .clip-grid,
-  .photo-grid {
+  .clip-grid {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-
-  .photo-wide {
-    grid-column: 1 / -1;
   }
 }
 
@@ -1042,8 +1013,7 @@ footer a:focus-visible {
     border-bottom: 0;
   }
 
-  .clip-grid,
-  .photo-grid {
+  .clip-grid {
     gap: 1.25rem;
   }
 }

@@ -1,6 +1,6 @@
 # NYC Leather Repair
 
-Public page for NYC Leather Repair. `index.html` and `styles.css` are the source. `player.js` only starts a video after a click. `sh build.sh` copies the page, fonts, `media/`, `icon.svg`, `404.html`, `CNAME`, and `.nojekyll` into `dist/`. `dist/` is not committed.
+Public page for NYC Leather Repair. `index.html` and `styles.css` are the source. `hours.js` fills the Open or Closed label from the GitHub Pages Date header. `carousel.js` runs the shop photo carousel. `player.js` only starts a video after a click. `sh build.sh` copies the page, scripts, fonts, media, `icon.svg`, `404.html`, `CNAME` and `.nojekyll` into `dist/`. `dist/` is not committed.
 
 The canonical URL is `https://leatherstudio.nyc/`. This repository does not change DNS, and it does not show that an HTTPS certificate is active.
 
@@ -25,4 +25,4 @@ Or one `ALIAS` or `ANAME` to `nycleather.github.io`. No wildcard. The verificati
 
 ## Shop media
 
-Three photographs: `workshop`, `hands-cutting`, and `finishing-machine`. Two reviewed clips, `sole-trimming` and `sole-finishing`, with WebP posters. The later preferred clip and the black-shoe photograph are not in this repository.
+Three photographs: `workshop`, `hands-cutting`, and `finishing-machine`. Four Instagram reel stills are in `media/reels/`. Two reviewed clips, `sole-trimming` and `sole-finishing`, with WebP posters. The later preferred clip and the black-shoe photograph are not in this repository.
