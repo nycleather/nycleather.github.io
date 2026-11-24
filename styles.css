@@ -337,6 +337,10 @@ p {
 }
 
 .hours-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   margin-top: 0.4rem;
   font-family: var(--sign);
   font-size: 0.875rem;
@@ -347,6 +351,45 @@ p {
 
 .hours-status[hidden] {
   display: none;
+}
+
+.hours-dot {
+  display: inline-block;
+  width: 0.5625rem;
+  height: 0.5625rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hours-status.is-open .hours-dot {
+  background: #1a7a32;
+  box-shadow: 0 0 0 0 rgb(26 122 50 / 45%);
+  animation: hours-pulse 2s ease-out infinite;
+}
+
+.hours-status.is-closed .hours-dot {
+  background: #c01515;
+}
+
+@keyframes hours-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(26 122 50 / 45%);
+  }
+
+  70% {
+    box-shadow: 0 0 0 0.5rem rgb(26 122 50 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(26 122 50 / 0%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hours-status.is-open .hours-dot {
+    animation: none;
+    box-shadow: none;
+  }
 }
 
 .hours-compact a {

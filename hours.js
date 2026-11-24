@@ -30,6 +30,10 @@
     open = t >= 10 * 60 && t < 17 * 60;
   }
 
-  el.textContent = open ? "Open now" : "Closed now";
+  var label = el.querySelector(".hours-status-text");
+  if (label) label.textContent = open ? "Open now" : "Closed now";
+  else el.textContent = open ? "Open now" : "Closed now";
+  el.classList.toggle("is-open", open);
+  el.classList.toggle("is-closed", !open);
   el.removeAttribute("hidden");
 })();
