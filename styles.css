@@ -430,6 +430,15 @@ footer a:focus-visible {
   color: rgb(244 239 230 / 62%);
 }
 
+.credit a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.credit a:hover {
+  text-decoration: underline;
+}
+
 .fine {
   margin-top: 0.75rem;
   font-size: 0.75rem;

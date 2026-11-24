@@ -37,7 +37,7 @@ required = [
     "Sole finishing",
     "tel:+12122652108",
     "212-265-2108",
-    'made by Memento Terran',
+    'made by <a href="https://mementoterran.com/" target="_blank" rel="noopener">Memento Terran</a>',
     "205+West+57th+Street",
     'rel="canonical" href="https://leatherstudio.nyc/"',
     "Workshop interior at NYC Leather Repair",
