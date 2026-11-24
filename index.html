@@ -19,30 +19,55 @@
   <body>
     <main>
       <section class="sign-wrap" aria-labelledby="shop-name">
-        <div class="sign">
-          <h1 id="shop-name" class="wordmark">
-            <span class="wordmark-nyc">NYC</span>
-            <span class="wordmark-bar" aria-hidden="true"></span>
-            <span class="wordmark-line">Leather Repair</span>
-          </h1>
-        </div>
-        <div class="intro">
-          <p>
-            205 West 57th Street<br />
-            New York, NY<br />
-            Between 7th Avenue and Broadway<br />
-            Near Carnegie Hall
-          </p>
-          <div class="actions">
-            <a class="btn btn-board" href="tel:+12122652108">Call 212-265-2108</a>
-            <a
-              class="btn btn-line"
-              href="https://www.google.com/maps/search/?api=1&amp;query=205+West+57th+Street%2C+New+York%2C+NY"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Directions</a
-            >
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="sign">
+              <h1 id="shop-name" class="wordmark">
+                <span class="wordmark-nyc">NYC</span>
+                <span class="wordmark-bar" aria-hidden="true"></span>
+                <span class="wordmark-line">Leather Repair</span>
+              </h1>
+            </div>
+            <div class="intro">
+              <p>
+                205 West 57th Street<br />
+                New York, NY<br />
+                Between 7th Avenue and Broadway<br />
+                Near Carnegie Hall
+              </p>
+              <div class="actions">
+                <a class="btn btn-board" href="tel:+12122652108">Call 212-265-2108</a>
+                <a
+                  class="btn btn-line"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=205+West+57th+Street%2C+New+York%2C+NY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Directions</a
+                >
+              </div>
+            </div>
+            <div class="hours-compact" aria-labelledby="hours-heading">
+              <h2 id="hours-heading" class="section-label">Hours</h2>
+              <p>Monday to Friday, 7:30 AM to 6:30 PM</p>
+              <p>Saturday, 10 AM to 5 PM</p>
+              <p>Or by appointment, call <a href="tel:+12122652108">212-265-2108</a></p>
+              <p id="hours-status" class="hours-status" hidden></p>
+            </div>
           </div>
+          <figure class="hero-shot">
+            <img
+              class="shot"
+              src="/media/photos/workshop-800.webp"
+              srcset="/media/photos/workshop-800.webp 800w, /media/photos/workshop-1600.webp 1600w"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              alt="Workshop interior at NYC Leather Repair, with shoes and materials on the benches"
+              width="1600"
+              height="900"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption>Workshop</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -82,13 +107,84 @@
             >
           </div>
         </div>
-      </section>
-
-      <section class="hours" aria-labelledby="hours-heading">
-        <h2 id="hours-heading" class="section-label">Hours</h2>
-        <p>Monday to Friday, 7:30 AM to 6:30 PM</p>
-        <p>Saturday, 10 AM to 5 PM</p>
-        <p>Or by appointment, call <a href="tel:+12122652108">212-265-2108</a></p>
+        <ul class="ig-reels">
+          <li>
+            <a
+              class="ig-reel"
+              href="https://www.instagram.com/reel/DflS06sxesX/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Watch on Instagram"
+            >
+              <img
+                src="/media/reels/DflS06sxesX.webp"
+                alt=""
+                width="720"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="ig-reel-play" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="ig-reel"
+              href="https://www.instagram.com/reel/Dcex0pORZWg/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Watch on Instagram"
+            >
+              <img
+                src="/media/reels/Dcex0pORZWg.webp"
+                alt=""
+                width="720"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="ig-reel-play" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="ig-reel"
+              href="https://www.instagram.com/reel/Dcv7O2wx434/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Watch on Instagram"
+            >
+              <img
+                src="/media/reels/Dcv7O2wx434.webp"
+                alt=""
+                width="720"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="ig-reel-play" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="ig-reel"
+              href="https://www.instagram.com/reel/DbVbtuWxD2C/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Watch on Instagram"
+            >
+              <img
+                src="/media/reels/DbVbtuWxD2C.webp"
+                alt=""
+                width="720"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="ig-reel-play" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
       </section>
 
       <section class="panel" aria-labelledby="services-heading">
@@ -158,26 +254,12 @@
           </figure>
         </div>
         <div class="photo-grid">
-          <figure class="photo-wide">
-            <img
-              class="shot"
-              src="/media/photos/workshop-800.webp"
-              srcset="/media/photos/workshop-800.webp 800w, /media/photos/workshop-1600.webp 1600w"
-              sizes="(min-width: 640px) 42rem, 100vw"
-              alt="Workshop interior at NYC Leather Repair, with shoes and materials on the benches"
-              width="1600"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Workshop</figcaption>
-          </figure>
           <figure>
             <img
               class="shot"
               src="/media/photos/hands-cutting-800.webp"
               srcset="/media/photos/hands-cutting-800.webp 800w, /media/photos/hands-cutting-1600.webp 1600w"
-              sizes="(min-width: 640px) 20rem, 100vw"
+              sizes="(min-width: 1024px) 36rem, (min-width: 640px) 20rem, 100vw"
               alt="Hands cutting a piece of material beside a shoe on the workbench"
               width="1600"
               height="900"
@@ -191,7 +273,7 @@
               class="shot"
               src="/media/photos/finishing-machine-800.webp"
               srcset="/media/photos/finishing-machine-800.webp 800w, /media/photos/finishing-machine-1600.webp 1600w"
-              sizes="(min-width: 640px) 20rem, 100vw"
+              sizes="(min-width: 1024px) 36rem, (min-width: 640px) 20rem, 100vw"
               alt="A worker holding a shoe to a finishing machine"
               width="1600"
               height="900"
@@ -240,6 +322,7 @@
       </p>
       <p class="credit">made by <a href="https://mementoterran.com/" target="_blank" rel="noopener">Memento Terran</a></p>
     </footer>
+    <script src="/hours.js" defer></script>
     <script src="/player.js" defer></script>
   </body>
 </html>

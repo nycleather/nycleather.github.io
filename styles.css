@@ -78,6 +78,18 @@ p {
   padding: 1rem 1rem 0;
 }
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.hero-shot {
+  margin: 0;
+}
+
 .sign {
   width: max-content;
   max-width: 100%;
@@ -148,6 +160,38 @@ p {
 .intro {
   margin-top: 2rem;
   text-align: center;
+}
+
+.hours-compact {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.hours-compact .section-label {
+  margin-bottom: 0.5rem;
+}
+
+.hours-compact p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+}
+
+.hours-status {
+  margin-top: 0.4rem;
+  font-family: var(--sign);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hours-status[hidden] {
+  display: none;
+}
+
+.hours-compact a {
+  color: inherit;
 }
 
 .intro p,
@@ -472,17 +516,95 @@ footer a:focus-visible {
 
 .instagram {
   margin-top: 2.5rem;
-  padding: 2rem 1rem;
-  border-top: 4px solid var(--ink);
-  border-bottom: 4px solid var(--ink);
-  background: var(--mustard);
+  padding: 0;
+  background: var(--cream);
   color: var(--ink);
   text-align: center;
 }
 
 .ig-band {
+  max-width: none;
+  margin: 0;
+  padding: 2rem 1rem;
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  background: var(--mustard);
+}
+
+.ig-band .ig-icon,
+.ig-band .ig-headline,
+.ig-band .ig-handle,
+.ig-band .actions {
+  max-width: 36rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ig-reels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  list-style: none;
   max-width: 36rem;
   margin: 0 auto;
+  padding: 1.25rem 1rem 0;
+}
+
+.ig-reels li {
+  margin: 0;
+  min-width: 0;
+}
+
+.ig-reel {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background: var(--mat);
+  aspect-ratio: 9 / 16;
+}
+
+.ig-reel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ig-reel-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  border-radius: 50%;
+}
+
+.ig-reel-play::before {
+  content: "";
+  position: absolute;
+  left: 52%;
+  top: 50%;
+  transform: translate(-40%, -50%);
+  border-style: solid;
+  border-width: 0.42rem 0 0.42rem 0.7rem;
+  border-color: transparent transparent transparent var(--cream);
+}
+
+.ig-reel:hover .ig-reel-play {
+  background: var(--cream);
+}
+
+.ig-reel:hover .ig-reel-play::before {
+  border-color: transparent transparent transparent var(--ink);
+}
+
+.ig-reel:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .ig-icon {
@@ -537,7 +659,20 @@ footer a:focus-visible {
 @media (min-width: 640px) {
   .instagram {
     margin-top: 3rem;
+  }
+
+  .ig-band {
     padding: 2.5rem 1.5rem;
+  }
+
+  .ig-reels {
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .hours-compact p {
+    font-size: 1rem;
+    line-height: 1.6rem;
   }
 
   .sign-wrap {
@@ -586,5 +721,63 @@ footer a:focus-visible {
 
   .photo-wide {
     grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sign-wrap {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 0;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(20rem, 1fr) minmax(22rem, 1.15fr);
+    gap: 2.5rem 3rem;
+    align-items: start;
+    max-width: 75rem;
+  }
+
+  .wordmark {
+    font-size: clamp(5rem, 8vw, 7.5rem);
+  }
+
+  .intro {
+    margin-top: 1.75rem;
+  }
+
+  .ig-reels,
+  .panel,
+  .photos {
+    max-width: 75rem;
+  }
+
+  .ig-reels {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1.75rem 1.5rem 0;
+  }
+
+  .panel,
+  .photos,
+  .visit {
+    margin-top: 4rem;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid rgb(244 239 230 / 30%);
+  }
+
+  .service {
+    padding: 1.1rem 1rem;
+  }
+
+  .clip-grid,
+  .photo-grid {
+    gap: 1.25rem;
   }
 }
