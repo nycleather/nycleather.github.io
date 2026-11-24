@@ -460,7 +460,77 @@ footer a:focus-visible {
   color: var(--ink);
 }
 
+
+.instagram {
+  margin-top: 2.5rem;
+  padding: 2rem 1rem;
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  background: var(--mustard);
+  color: var(--ink);
+  text-align: center;
+}
+
+.ig-band {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.ig-icon {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 auto;
+}
+
+.ig-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.75rem 0 0;
+}
+
+.ig-count {
+  font-family: var(--card);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 12vw, 4.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.ig-label {
+  padding-left: 0.16em;
+  font-family: var(--sign);
+  font-size: clamp(1rem, 3.8vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ig-handle {
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ig-handle a {
+  color: inherit;
+}
+
+.ig-handle a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
 @media (min-width: 640px) {
+  .instagram {
+    margin-top: 3rem;
+    padding: 2.5rem 1.5rem;
+  }
+
   .sign-wrap {
     padding-top: 1.5rem;
   }

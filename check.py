@@ -43,6 +43,10 @@ required = [
     "Workshop interior at NYC Leather Repair",
     "Hands cutting a piece of material beside a shoe",
     "A worker holding a shoe to a finishing machine",
+    "19K+",
+    "followers on Instagram",
+    "@nycleatherrepair",
+    "https://www.instagram.com/nycleatherrepair/",
     'data-src="/media/videos/sole-trimming.mp4"',
     'data-src="/media/videos/sole-finishing.mp4"',
 ]
