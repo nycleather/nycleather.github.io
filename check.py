@@ -70,6 +70,14 @@ if html.count('src="/player.js"') != 1:
     fail("player.js should be included once")
 if html.count('src="/hours.js"') != 1:
     fail("hours.js should be included once")
+
+hours = (dist / "hours.js").read_text()
+if re.search(r"new Date\s*\(\s*\)", hours) or re.search(r"Date\.now\s*\(", hours):
+    fail("hours.js must not use the device clock")
+if 'cache: "no-store"' not in hours and "cache: 'no-store'" not in hours:
+    fail("hours.js should fetch the Date header with cache no-store")
+if "headers.get(" not in hours or "performance.now" not in hours:
+    fail("hours.js should read the Date header and track elapsed time with performance.now")
 if html.count('src="/carousel.js"') != 1:
     fail("carousel.js should be included once")
 if re.search(r"bryce|grok", html, re.I):
