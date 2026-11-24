@@ -37,14 +37,25 @@ required = [
     "Sole finishing",
     "tel:+12122652108",
     "212-265-2108",
-    'Designed by <a href="https://mechaturtles.com" rel="noopener">mechaturtles.com</a>',
+    'made by <a href="https://mementoterran.com/" target="_blank" rel="noopener">Memento Terran</a>',
     "205+West+57th+Street",
     'rel="canonical" href="https://leatherstudio.nyc/"',
     "Workshop interior at NYC Leather Repair",
     "Hands cutting a piece of material beside a shoe",
     "A worker holding a shoe to a finishing machine",
+    "19K+",
+    "followers on Instagram",
+    "@nycleatherrepair",
+    "https://www.instagram.com/nycleatherrepair/",
+    "https://www.instagram.com/reel/DflS06sxesX/",
+    "https://www.instagram.com/reel/Dcex0pORZWg/",
+    "https://www.instagram.com/reel/Dcv7O2wx434/",
+    "https://www.instagram.com/reel/DbVbtuWxD2C/",
+    "Watch on Instagram",
     'data-src="/media/videos/sole-trimming.mp4"',
     'data-src="/media/videos/sole-finishing.mp4"',
+    'href="#services"',
+    'id="services"',
 ]
 for text in required:
     if text not in html:
@@ -55,10 +66,22 @@ for banned in ("Website preview", "Draft for review", "noindex", "nofollow", "Ph
         fail(f"index.html still contains {banned}")
 if "<video" in html.lower():
     fail("video element is in the initial HTML")
-if re.search(r'<script(?![^>]+src="/player\.js")', html):
+if re.search(r'<script(?![^>]+src="/(?:player|hours|carousel)\.js")', html):
     fail("unexpected script in index.html")
 if html.count('src="/player.js"') != 1:
     fail("player.js should be included once")
+if html.count('src="/hours.js"') != 1:
+    fail("hours.js should be included once")
+
+hours = (dist / "hours.js").read_text()
+if re.search(r"new Date\s*\(\s*\)", hours) or re.search(r"Date\.now\s*\(", hours):
+    fail("hours.js must not use the device clock")
+if 'cache: "no-store"' not in hours and "cache: 'no-store'" not in hours:
+    fail("hours.js should fetch the Date header with cache no-store")
+if "headers.get(" not in hours or "performance.now" not in hours:
+    fail("hours.js should read the Date header and track elapsed time with performance.now")
+if html.count('src="/carousel.js"') != 1:
+    fail("carousel.js should be included once")
 if re.search(r"bryce|grok", html, re.I):
     fail("unexpected credit in index.html")
 if "nycleatherrepair.com" in html:
@@ -79,14 +102,21 @@ if re.search(r"\.mp4", html) and not re.search(r'data-src="/media/videos/[^"]+\.
 for match in re.finditer(r'(?<![\w-])(?:src|href)="([^"]+\.mp4)"', html):
     fail(f"mp4 is fetchable from {match.group(0)}")
 
-lazy_images = re.findall(r"<img\b[^>]*>", html)
-if len(lazy_images) != 5:
-    fail(f"expected 5 images, found {len(lazy_images)}")
-for tag in lazy_images:
-    if "loading=\"lazy\"" not in tag:
-        fail(f"image is not lazy: {tag[:80]}")
+images = re.findall(r"<img\b[^>]*>", html)
+if len(images) != 9:
+    fail(f"expected 9 images, found {len(images)}")
+hero_images = [tag for tag in images if "fetchpriority=" in tag]
+if len(hero_images) != 1:
+    fail(f"expected 1 hero image, found {len(hero_images)}")
+for tag in images:
     if not re.search(r'width="\d+"', tag) or not re.search(r'height="\d+"', tag):
         fail("image missing width or height")
+    if "fetchpriority=" in tag:
+        if 'loading="lazy"' in tag:
+            fail("hero image should not be lazy")
+        continue
+    if 'loading="lazy"' not in tag:
+        fail(f"image is not lazy: {tag[:80]}")
 
 photos = [
     "media/photos/workshop-800.webp",
@@ -99,6 +129,10 @@ photos = [
     "media/videos/sole-finishing.webp",
     "media/videos/sole-trimming.mp4",
     "media/videos/sole-finishing.mp4",
+    "media/reels/DflS06sxesX.webp",
+    "media/reels/Dcex0pORZWg.webp",
+    "media/reels/Dcv7O2wx434.webp",
+    "media/reels/DbVbtuWxD2C.webp",
 ]
 for relative in photos:
     path = dist / relative
