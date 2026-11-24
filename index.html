@@ -54,20 +54,73 @@
               <p id="hours-status" class="hours-status" hidden></p>
             </div>
           </div>
-          <figure class="hero-shot">
-            <img
-              class="shot"
-              src="/media/photos/workshop-800.webp"
-              srcset="/media/photos/workshop-800.webp 800w, /media/photos/workshop-1600.webp 1600w"
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              alt="Workshop interior at NYC Leather Repair, with shoes and materials on the benches"
-              width="1600"
-              height="900"
-              fetchpriority="high"
-              decoding="async"
-            />
-            <figcaption>Workshop</figcaption>
-          </figure>
+          <div
+            class="hero-carousel"
+            aria-roledescription="carousel"
+            aria-label="Shop photos"
+            tabindex="0"
+          >
+            <div class="hero-carousel-viewport">
+              <ul class="hero-carousel-track">
+                <li class="hero-carousel-slide" data-caption="Workshop">
+                  <figure>
+                    <img
+                      class="shot"
+                      src="/media/photos/workshop-800.webp"
+                      srcset="/media/photos/workshop-800.webp 800w, /media/photos/workshop-1600.webp 1600w"
+                      sizes="(min-width: 1024px) 75rem, 100vw"
+                      alt="Workshop interior at NYC Leather Repair, with shoes and materials on the benches"
+                      width="1600"
+                      height="900"
+                      fetchpriority="high"
+                      decoding="async"
+                    />
+                  </figure>
+                </li>
+                <li class="hero-carousel-slide" data-caption="Cutting" aria-hidden="true">
+                  <figure>
+                    <img
+                      class="shot"
+                      src="/media/photos/hands-cutting-800.webp"
+                      srcset="/media/photos/hands-cutting-800.webp 800w, /media/photos/hands-cutting-1600.webp 1600w"
+                      sizes="(min-width: 1024px) 75rem, 100vw"
+                      alt="Hands cutting a piece of material beside a shoe on the workbench"
+                      width="1600"
+                      height="900"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                </li>
+                <li class="hero-carousel-slide" data-caption="Finishing" aria-hidden="true">
+                  <figure>
+                    <img
+                      class="shot"
+                      src="/media/photos/finishing-machine-800.webp"
+                      srcset="/media/photos/finishing-machine-800.webp 800w, /media/photos/finishing-machine-1600.webp 1600w"
+                      sizes="(min-width: 1024px) 75rem, 100vw"
+                      alt="A worker holding a shoe to a finishing machine"
+                      width="1600"
+                      height="900"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                </li>
+              </ul>
+              <button type="button" class="hero-carousel-prev" aria-label="Previous photo"></button>
+              <button type="button" class="hero-carousel-next" aria-label="Next photo"></button>
+            </div>
+            <p class="hero-carousel-caption" aria-live="polite">Workshop</p>
+            <div class="hero-carousel-nav">
+              <button type="button" class="hero-carousel-pause" aria-pressed="false">Pause</button>
+              <div class="hero-carousel-dots">
+                <button type="button" data-carousel-dot aria-label="Show Workshop photo" aria-current="true"></button>
+                <button type="button" data-carousel-dot aria-label="Show Cutting photo"></button>
+                <button type="button" data-carousel-dot aria-label="Show Finishing photo"></button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -106,85 +159,85 @@
               >Follow</a
             >
           </div>
+          <ul class="ig-reels">
+            <li>
+              <a
+                class="ig-reel"
+                href="https://www.instagram.com/reel/DflS06sxesX/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Watch on Instagram"
+              >
+                <img
+                  src="/media/reels/DflS06sxesX.webp"
+                  alt=""
+                  width="720"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="ig-reel-play" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="ig-reel"
+                href="https://www.instagram.com/reel/Dcex0pORZWg/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Watch on Instagram"
+              >
+                <img
+                  src="/media/reels/Dcex0pORZWg.webp"
+                  alt=""
+                  width="720"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="ig-reel-play" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="ig-reel"
+                href="https://www.instagram.com/reel/Dcv7O2wx434/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Watch on Instagram"
+              >
+                <img
+                  src="/media/reels/Dcv7O2wx434.webp"
+                  alt=""
+                  width="720"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="ig-reel-play" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="ig-reel"
+                href="https://www.instagram.com/reel/DbVbtuWxD2C/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Watch on Instagram"
+              >
+                <img
+                  src="/media/reels/DbVbtuWxD2C.webp"
+                  alt=""
+                  width="720"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="ig-reel-play" aria-hidden="true"></span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <ul class="ig-reels">
-          <li>
-            <a
-              class="ig-reel"
-              href="https://www.instagram.com/reel/DflS06sxesX/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Watch on Instagram"
-            >
-              <img
-                src="/media/reels/DflS06sxesX.webp"
-                alt=""
-                width="720"
-                height="1280"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="ig-reel-play" aria-hidden="true"></span>
-            </a>
-          </li>
-          <li>
-            <a
-              class="ig-reel"
-              href="https://www.instagram.com/reel/Dcex0pORZWg/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Watch on Instagram"
-            >
-              <img
-                src="/media/reels/Dcex0pORZWg.webp"
-                alt=""
-                width="720"
-                height="1280"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="ig-reel-play" aria-hidden="true"></span>
-            </a>
-          </li>
-          <li>
-            <a
-              class="ig-reel"
-              href="https://www.instagram.com/reel/Dcv7O2wx434/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Watch on Instagram"
-            >
-              <img
-                src="/media/reels/Dcv7O2wx434.webp"
-                alt=""
-                width="720"
-                height="1280"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="ig-reel-play" aria-hidden="true"></span>
-            </a>
-          </li>
-          <li>
-            <a
-              class="ig-reel"
-              href="https://www.instagram.com/reel/DbVbtuWxD2C/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Watch on Instagram"
-            >
-              <img
-                src="/media/reels/DbVbtuWxD2C.webp"
-                alt=""
-                width="720"
-                height="1280"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="ig-reel-play" aria-hidden="true"></span>
-            </a>
-          </li>
-        </ul>
       </section>
 
       <section class="panel" aria-labelledby="services-heading">
@@ -253,36 +306,6 @@
             <figcaption>Sole finishing</figcaption>
           </figure>
         </div>
-        <div class="photo-grid">
-          <figure>
-            <img
-              class="shot"
-              src="/media/photos/hands-cutting-800.webp"
-              srcset="/media/photos/hands-cutting-800.webp 800w, /media/photos/hands-cutting-1600.webp 1600w"
-              sizes="(min-width: 1024px) 36rem, (min-width: 640px) 20rem, 100vw"
-              alt="Hands cutting a piece of material beside a shoe on the workbench"
-              width="1600"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Cutting</figcaption>
-          </figure>
-          <figure>
-            <img
-              class="shot"
-              src="/media/photos/finishing-machine-800.webp"
-              srcset="/media/photos/finishing-machine-800.webp 800w, /media/photos/finishing-machine-1600.webp 1600w"
-              sizes="(min-width: 1024px) 36rem, (min-width: 640px) 20rem, 100vw"
-              alt="A worker holding a shoe to a finishing machine"
-              width="1600"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Finishing</figcaption>
-          </figure>
-        </div>
       </section>
 
       <section class="visit" aria-labelledby="visit-heading">
@@ -323,6 +346,7 @@
       <p class="credit">made by <a href="https://mementoterran.com/" target="_blank" rel="noopener">Memento Terran</a></p>
     </footer>
     <script src="/hours.js" defer></script>
+    <script src="/carousel.js" defer></script>
     <script src="/player.js" defer></script>
   </body>
 </html>

@@ -64,12 +64,14 @@ for banned in ("Website preview", "Draft for review", "noindex", "nofollow", "Ph
         fail(f"index.html still contains {banned}")
 if "<video" in html.lower():
     fail("video element is in the initial HTML")
-if re.search(r'<script(?![^>]+src="/(?:player|hours)\.js")', html):
+if re.search(r'<script(?![^>]+src="/(?:player|hours|carousel)\.js")', html):
     fail("unexpected script in index.html")
 if html.count('src="/player.js"') != 1:
     fail("player.js should be included once")
 if html.count('src="/hours.js"') != 1:
     fail("hours.js should be included once")
+if html.count('src="/carousel.js"') != 1:
+    fail("carousel.js should be included once")
 if re.search(r"bryce|grok", html, re.I):
     fail("unexpected credit in index.html")
 if "nycleatherrepair.com" in html:
